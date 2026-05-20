@@ -6,158 +6,239 @@
   <title>Privacy Policy — Workout Buddy</title>
   <meta name="description" content="Privacy policy for Workout Buddy: what we collect, why, where it lives, and how to delete it." />
   <meta name="robots" content="index,follow" />
-  <meta name="theme-color" content="#0A0A0A" media="(prefers-color-scheme: dark)" />
-  <meta name="theme-color" content="#F2F2F7" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#E9DCC2" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" />
   <style>
+    /* ── 1930s vintage poster palette — matches the app's "retro" theme
+       (constants/colors.ts): aged cream paper, sepia ink, brick-red accent.
+       Fixed warm look; intentionally no light/dark adaptation. ── */
     :root {
-      --bg:           #F2F2F7;
-      --surface:      #FFFFFF;
-      --text:         rgba(0,0,0,0.92);
-      --text-2:       #6C6C6C;
-      --text-3:       #969696;
-      --border:       rgba(0,0,0,0.10);
-      --accent:       #E8FF47;
-      --accent-ink:   #0A0A0A;
-      --danger:       #FF4444;
-      --code-bg:      rgba(0,0,0,0.04);
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg:         #0A0A0A;
-        --surface:    #1C1C1C;
-        --text:       rgba(255,255,255,0.94);
-        --text-2:     #8A8A8A;
-        --text-3:     #666666;
-        --border:     rgba(255,255,255,0.10);
-        --code-bg:    rgba(255,255,255,0.06);
-      }
+      --paper:        #E9DCC2;  /* page background — aged cream */
+      --sheet:        #F1E6CE;  /* card surface — lighter cream */
+      --sheet-alt:    #EDE1C6;
+      --text:         rgba(35,25,18,0.92);  /* primary type — printed ink */
+      --text-body:    rgba(35,25,18,0.80);
+      --text-2:       #7A6243;  /* secondary — sepia */
+      --text-3:       #9C8567;  /* tertiary */
+      --brick:        #B5392D;  /* accent */
+      --brick-deep:   #8F2C22;
+      --border:       rgba(60,40,20,0.16);
+      --border-soft:  rgba(60,40,20,0.10);
+      --code-bg:      #EDE1C6;
     }
     * { box-sizing: border-box; }
-    html, body { padding: 0; margin: 0; background: var(--bg); }
+    html, body { padding: 0; margin: 0; }
     body {
       font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
-      color: var(--text);
+      color: var(--text-body);
+      background-color: var(--paper);
+      /* Faint warm vignette so the cream reads as paper under a key light,
+         not a flat fill — same trick the in-app LaunchScreen uses. */
+      background-image:
+        radial-gradient(120% 80% at 50% 0%, rgba(255,248,230,0.55) 0%, rgba(255,248,230,0) 55%),
+        radial-gradient(100% 60% at 50% 100%, rgba(120,90,50,0.06) 0%, rgba(120,90,50,0) 60%);
+      background-attachment: fixed;
       font-size: 16px;
-      line-height: 1.55;
+      line-height: 1.62;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
     main {
       max-width: 720px;
-      margin: 0 auto;
-      padding: 56px 24px 96px;
+      margin: 40px auto;
+      padding: 52px 48px 60px;
+      background: var(--sheet);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      box-shadow: 0 1px 0 rgba(255,255,255,0.45) inset, 0 18px 40px rgba(60,40,20,0.10);
+      position: relative;
+    }
+    /* Decorative double-rule frame inside the sheet — a classic poster border. */
+    main::before {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border: 1px solid var(--border-soft);
+      border-radius: 2px;
+      pointer-events: none;
     }
     @media (max-width: 600px) {
-      main { padding: 32px 20px 64px; }
+      main { margin: 0; padding: 30px 22px 44px; border-radius: 0; }
+      main::before { inset: 8px; }
     }
     header {
-      margin-bottom: 32px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--border);
+      text-align: center;
+      margin-bottom: 36px;
+      padding-bottom: 24px;
+      border-bottom: 2px solid var(--text);
+      position: relative;
+    }
+    /* Thin secondary rule under the main one = double-rule poster divider. */
+    header::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -5px;
+      height: 1px;
+      background: var(--text);
+      opacity: 0.42;
     }
     .eyebrow {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.4px;
+      font-family: 'Bebas Neue', 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      letter-spacing: 0.42em;
+      text-indent: 0.42em;
       text-transform: uppercase;
-      color: var(--accent-ink);
-      background: var(--accent);
-      display: inline-block;
-      padding: 4px 10px;
-      border-radius: 999px;
-      margin-bottom: 16px;
+      color: var(--brick);
+      display: block;
+      margin-bottom: 14px;
     }
     h1 {
-      font-size: 36px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      margin: 0 0 8px;
-      line-height: 1.15;
+      font-family: 'Bebas Neue', 'DM Sans', sans-serif;
+      font-size: 60px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      margin: 0 0 14px;
+      line-height: 0.96;
+      color: var(--text);
     }
     .meta {
       color: var(--text-2);
-      font-size: 14px;
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
       margin: 0;
     }
     h2 {
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: -0.3px;
-      margin: 40px 0 12px;
-      line-height: 1.3;
+      font-family: 'Bebas Neue', 'DM Sans', sans-serif;
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      margin: 44px 0 14px;
+      line-height: 1.15;
+      color: var(--text);
+      padding-left: 18px;
+      position: relative;
+    }
+    /* Brick-red square tick before each section head — poster bullet motif. */
+    h2::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.46em;
+      width: 9px;
+      height: 9px;
+      background: var(--brick);
     }
     h2:first-of-type { margin-top: 28px; }
+    h2 em { font-style: normal; color: var(--brick); }
     h3 {
-      font-size: 15px;
-      font-weight: 700;
-      margin: 24px 0 8px;
-      letter-spacing: -0.1px;
+      font-family: 'Bebas Neue', 'DM Sans', sans-serif;
+      font-size: 19px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      margin: 26px 0 8px;
+      color: var(--text);
     }
-    p { margin: 0 0 14px; }
-    ul {
+    p { margin: 0 0 14px; color: var(--text-body); }
+    ul, ol {
       padding-left: 22px;
       margin: 0 0 16px;
     }
-    li { margin-bottom: 6px; }
-    a {
-      color: var(--text);
-      text-decoration: underline;
-      text-decoration-color: var(--border);
-      text-underline-offset: 3px;
+    ul { list-style: none; padding-left: 0; }
+    ul li {
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 7px;
+      color: var(--text-body);
     }
-    a:hover { text-decoration-color: var(--text-2); }
-    strong { font-weight: 700; }
+    /* Diamond bullet in brick outline — vintage list marker. */
+    ul li::before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: 0.62em;
+      width: 6px;
+      height: 6px;
+      border: 1px solid var(--brick);
+      transform: rotate(45deg);
+    }
+    ol li { margin-bottom: 7px; color: var(--text-body); }
+    a {
+      color: var(--brick);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(181,57,45,0.35);
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+    a:hover { color: var(--brick-deep); border-bottom-color: var(--brick-deep); }
+    strong { font-weight: 700; color: var(--text); }
     code, kbd {
-      font-family: 'SF Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: 13px;
+      font-family: 'Bebas Neue', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 14px;
+      letter-spacing: 0.08em;
       background: var(--code-bg);
-      padding: 2px 6px;
-      border-radius: 4px;
+      border: 1px solid var(--border);
+      color: var(--brick);
+      padding: 2px 7px;
+      border-radius: 3px;
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 12px 0 18px;
+      margin: 14px 0 20px;
       font-size: 14px;
     }
     th, td {
       text-align: left;
-      padding: 10px 12px;
-      border-bottom: 1px solid var(--border);
+      padding: 11px 12px;
+      border-bottom: 1px solid var(--border-soft);
     }
     th {
-      font-weight: 700;
-      color: var(--text-2);
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      font-family: 'Bebas Neue', 'DM Sans', sans-serif;
+      font-weight: 400;
+      color: var(--brick);
+      font-size: 15px;
+      letter-spacing: 0.12em;
+      border-bottom: 2px solid var(--border);
     }
+    td { color: var(--text-body); vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
     .contact-block {
       margin-top: 48px;
-      padding: 20px;
-      background: var(--surface);
+      padding: 20px 22px;
+      background: var(--sheet-alt);
       border: 1px solid var(--border);
-      border-radius: 14px;
+      border-left: 3px solid var(--brick);
+      border-radius: 3px;
     }
     .contact-block p { margin: 0; }
     .contact-block a { font-weight: 500; }
     footer {
-      margin-top: 64px;
+      margin-top: 56px;
       padding-top: 24px;
-      border-top: 1px solid var(--border);
-      color: var(--text-3);
-      font-size: 13px;
+      border-top: 2px solid var(--text);
+      color: var(--text-2);
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
       text-align: center;
+    }
+    .footer-mark {
+      font-family: 'Bebas Neue', 'DM Sans', sans-serif;
+      font-size: 16px;
+      letter-spacing: 0.32em;
+      text-indent: 0.32em;
+      color: var(--brick);
+      margin-bottom: 8px;
     }
   </style>
 </head>
 <body>
   <main>
     <header>
-      <span class="eyebrow">Workout Buddy</span>
+      <span class="eyebrow">Workout Buddy · Est 2026</span>
       <h1>Privacy Policy</h1>
       <p class="meta">Last updated: May 5, 2026</p>
     </header>
@@ -279,7 +360,8 @@
     </div>
 
     <footer>
-      &copy; 2026 Workout Buddy
+      <div class="footer-mark">Workout Buddy</div>
+      &copy; 2026 · All rights reserved
     </footer>
   </main>
 </body>
